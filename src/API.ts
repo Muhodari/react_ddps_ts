@@ -1,3 +1,4 @@
+import { type } from 'os';
 import {
   SEARCH_BASE_URL,
   POPULAR_BASE_URL,
@@ -15,18 +16,43 @@ const defaultConfig = {
   }
 };
 
+// types
+export type Movie={
+backdrop_path:string;
+id:number;
+original_title:string;
+overview:string;
+popularity:number;
+poster_path:string;
+title:string;
+vote_average:number;
+vote_count:number;
+budget:number;
+runtime:number;
+revenue:number;
+
+};
+
+export interface Movies{
+  page:number;
+  results:Movie[];
+  total_pages:number;
+  total_results:number;
+}
+
 const apiSettings = {
-  fetchMovies: async (searchTerm, page) => {
-    const endpoint = searchTerm
+  fetchMovies: async (searchTerm:string, page:number):Promise<Movies> => {
+    const endpoint:string  = searchTerm
       ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
       : `${POPULAR_BASE_URL}&page=${page}`;
     return await (await fetch(endpoint)).json();
   },
+
   fetchMovie: async movieId => {
     const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
     return await (await fetch(endpoint)).json();
   },
-  fetchCredits: async movieId => {
+  fetchCredits: async (movieId) => {
     const creditsEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
     return await (await fetch(creditsEndpoint)).json();
   },
