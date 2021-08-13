@@ -7,7 +7,7 @@ import { type } from 'os';
 
 export type Props={
   image:string;
-  movieId:number;
+  movieId?:number;
   clickable:boolean
 }
 

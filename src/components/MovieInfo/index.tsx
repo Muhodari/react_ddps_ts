@@ -9,7 +9,16 @@ import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text } from './MovieInfo.styles';
 
-const MovieInfo = ({ movie }) => (
+//  types
+
+import { MovieState } from '../hooks/useMovieFetch';
+
+export type Props={
+movie:MovieState;
+
+}
+
+const MovieInfo:React.FC<Props> = ({ movie }) => (
   <Wrapper backdrop={movie.backdrop_path}>
     <Content>
       <Thumb
@@ -42,8 +51,5 @@ const MovieInfo = ({ movie }) => (
   </Wrapper>
 );
 
-MovieInfo.propTypes = {
-  movie: PropTypes.object
-}
 
 export default MovieInfo;
