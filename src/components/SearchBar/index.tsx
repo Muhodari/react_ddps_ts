@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+
 // Image
 import searchIcon from '../../images/search-icon.svg';
 // Styles
 import { Wrapper, Content } from './SearchBar.styles';
-import { type } from 'os';
+
 
 export type Props ={
 setSearchTerm:React.Dispatch<React.SetStateAction<string>>
