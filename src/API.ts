@@ -82,7 +82,11 @@ const apiSettings = {
     const reqToken = await (await fetch(REQUEST_TOKEN_URL)).json();
     return reqToken.request_token;
   },
-  authenticate: async (requestToken, username, password) => {
+  authenticate: async (
+    requestToken:string,
+    username:string,
+    password :string
+      ) => {
     const bodyData = {
       username,
       password,
@@ -106,18 +110,20 @@ const apiSettings = {
       return sessionId;
     }
   },
-  rateMovie: async (sessionId, movieId, value) => {
-    const endpoint = `${API_URL}movie/${movieId}/rating?api_key=${API_KEY}&session_id=${sessionId}`;
 
-    const rating = await (
-      await fetch(endpoint, {
-        ...defaultConfig,
-        body: JSON.stringify({ value })
-      })
-    ).json();
 
-    return rating;
-  }
+  // rateMovie: async (sessionId, movieId, value) => {
+  //   const endpoint = `${API_URL}movie/${movieId}/rating?api_key=${API_KEY}&session_id=${sessionId}`;
+
+  //   const rating = await (
+  //     await fetch(endpoint, {
+  //       ...defaultConfig,
+  //       body: JSON.stringify({ value })
+  //     })
+  //   ).json();
+
+  //   return rating;
+  // }
 };
 
 export default apiSettings;
